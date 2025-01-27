@@ -43,31 +43,30 @@ console.log("Кількість стовпців, які містять нуль
 
 // Функція для знаходження індексу рядка з найдовшою серією повторюваних елементів
 function getRowWithLongestSeriesIndex(matrix) {
-    let longestSeries = 1; // Зберігаємо довжину найдовшої серії
-    let index = -1;        // Індекс рядка, де вона знайдена
+    let longestSeries = 1, index = -1;
 
-    for (let i = 0; i < matrix.length; i++) {
-        let series = 1; // Довжина поточної серії
-        for (let j = 1; j < matrix[i].length; j++) {
-            if (matrix[i][j - 1] === matrix[i][j]) { // Перевіряємо повторюваність елементів
-                series++;
+    matrix.forEach((row, i) => {
+        let currentSeries = row.reduce((max, el, j) => {
+            if (j > 0 && row[j - 1] === el) {
+                max.series++;
             } else {
-                if (series > longestSeries) { // Якщо поточна серія довша, оновлюємо значення
-                    longestSeries = series;
-                    index = i;
+                if (max.series > max.longest) {
+                    max.longest = max.series;
                 }
-                series = 1; // Скидаємо серію
+                max.series = 1;
             }
-        }
+            return max;
+        }, { series: 1, longest: 1 });
 
-        // Перевірка серії після завершення рядка
-        if (series > longestSeries) {
-            longestSeries = series;
+        if (currentSeries.longest > longestSeries) {
+            longestSeries = currentSeries.longest;
             index = i;
         }
-    }
-    return index; // Повертаємо індекс рядка
+    });
+
+    return index;
 }
+
 
 let index = getRowWithLongestSeriesIndex(matrix);
 index === -1 ?

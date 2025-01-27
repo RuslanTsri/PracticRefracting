@@ -1,0 +1,23 @@
+/* Основний стиль для таблиці */
+div.table {
+    margin: 15px;
+}
+
+/* Стиль таблиці та ячеек */
+table {
+    border-collapse: collapse; /* З'єднання меж таблиці */
+}
+
+table,
+td {
+    border: 1px solid black; /* Чорна межа для таблиці та ячеек */
+}
+
+td {
+    padding: 20px; /* Відступи всередині ячеек */
+}
+
+/* Стиль для вибраної ячейки */
+.selected {
+    background-color: yellow; /* Жовтий фон для вибраних ячеек */
+}

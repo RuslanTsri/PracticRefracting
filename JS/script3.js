@@ -29,7 +29,6 @@ function getColsWithZeroCount(matrix) {
     ).length;
 }
 
-
 console.log("Кількість стовпців, які містять нуль: " + getColsWithZeroCount(matrix));
 
 // Функція для знаходження індексу рядка з найдовшою серією повторюваних елементів
@@ -58,11 +57,8 @@ function getRowWithLongestSeriesIndex(matrix) {
     return index;
 }
 
-
 let index = getRowWithLongestSeriesIndex(matrix);
-index === -1 ?
-    console.log("Серії повторюваних елементів немає") :
-    console.log("Індекс рядка з найдовшою серією: " + index);
+index === -1 ? console.log("Серії повторюваних елементів немає") : console.log("Індекс рядка з найдовшою серією: " + index);
 
 // Обчислення добутку елементів у рядках без від'ємних елементів
 let productArrayWithoutNegativeElementsInRows = matrix
@@ -112,5 +108,3 @@ function getSumArrayWithoutNegativeElementsInCols(matrix) {
 }
 
 console.log("Сума елементів у стовпцях без від’ємних елементів: ", getSumArrayWithoutNegativeElementsInCols(matrix));
-
-

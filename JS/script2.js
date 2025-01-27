@@ -9,10 +9,8 @@ divTags.forEach(div => {
         let tdElements = table.querySelectorAll("td");
 
         // Проходимо через всі td, починаючи з другого, з кроком 2
-        for (let i = 1; i < tdElements.length; i += 2) {
-            // Додаємо клас "selected" до кожного другого td
-            tdElements[i].classList.add("selected");
-
-        }
+        tdElements.forEach((td, index) => {
+            if (index % 2 !== 0) td.classList.add("selected");
+        });
     });
 });

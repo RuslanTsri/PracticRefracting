@@ -1,11 +1,11 @@
-// Отримуємо всі абзаци та обчислюємо їх довжину
-let paragraphs = document.querySelectorAll('p');
-let pArray = [];
+// Функція для отримання довжини кожного абзацу
+function getParagraphLengths() {
+    let paragraphs = document.querySelectorAll('p');
+    return Array.from(paragraphs, paragraph => paragraph.innerText.length);
+}
 
-paragraphs.forEach(paragraph => {
-    pArray.push(paragraph.innerText.length);  // Додаємо довжину кожного абзацу в масив
-});
-
+// Викликаємо функцію для отримання довжин
+let pArray = getParagraphLengths();
 console.log(pArray);  // Виводимо масив з довжинами абзаців
 
 // Масив чисел для подальших операцій
@@ -48,4 +48,3 @@ console.log("Сортований масив: ", arr.sort((a, b) => a - b));
 
 // Реверс масиву після сортування
 console.log("Реверсований масив: ", arr.reverse());
-

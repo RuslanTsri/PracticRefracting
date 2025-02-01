@@ -1,12 +1,8 @@
 // Отримуємо всі абзаци та обчислюємо їх довжину
 let paragraphs = document.querySelectorAll('p');
-let pArray = [];
+let pArray = Array.from(paragraphs).map(paragraph => paragraph.innerText.length);
 
-paragraphs.forEach(paragraph => {
-    pArray.push(paragraph.innerText.length);  // Додаємо довжину кожного абзацу в масив
-});
-
-console.log(pArray);  // Виводимо масив з довжинами абзаців
+console.log(pArray); // Виводимо масив з довжинами абзаців
 
 // Масив чисел для подальших операцій
 let arr = [20, 17, 4, -4, 10, -9, 13, 4, 12, 22, 13, 19, 1, 3];
@@ -15,37 +11,33 @@ let arr = [20, 17, 4, -4, 10, -9, 13, 4, 12, 22, 13, 19, 1, 3];
 let max = Math.max(...arr);
 let min = Math.min(...arr);
 
-console.log("Максимальне: " + max);
-console.log("Мінімальне: " + min);
+console.log("Максимальне:", max);
+console.log("Мінімальне:", min);
 
-// Підрахунок кількості парних та непарних елементів
-let evenCount = arr.filter(el => el % 2 === 0).length;
-let oddCount = arr.filter(el => el % 2 !== 0).length;
+// Підрахунок кількості парних, непарних, додатних і від'ємних чисел
+let evenCount = 0, oddCount = 0, positiveCount = 0, negativeCount = 0, twoDigitNumbersCount = 0;
 
-console.log("Кількість:");
-console.log("Парні: " + evenCount);
-console.log("Непарні: " + oddCount);
+arr.forEach(num => {
+    if (num % 2 === 0) evenCount++;
+    else oddCount++;
 
-// Функція для перевірки, чи число є двоцифровим
-function hasTwoDigits(num) {
-    num = Math.abs(num);  // Перетворюємо на додатне для правильної перевірки
-    return num.toString().length === 2;  // Перевіряємо кількість цифр
-}
+    if (num > 0) positiveCount++;
+    else if (num < 0) negativeCount++;
 
-// Підрахунок двоцифрових чисел
-let twoDigitNumbersCount = arr.filter(el => hasTwoDigits(el)).length;
-console.log("Двоцифрові числа: " + twoDigitNumbersCount);
+    if (Math.abs(num) >= 10) twoDigitNumbersCount++;
+});
 
-// Підрахунок додатних та від'ємних чисел
-let positiveCount = arr.filter(el => el > 0).length;
-let negativeCount = arr.filter(el => el < 0).length;
+console.log("Кількість парних:", evenCount);
+console.log("Кількість непарних:", oddCount);
+console.log("Додатні:", positiveCount);
+console.log("Від'ємні:", negativeCount);
+console.log("Двоцифрові числа:", twoDigitNumbersCount);
 
-console.log("Додатні: " + positiveCount);
-console.log("Від'ємні: " + negativeCount);
+// Сортування масиву по зростанню (без зміни оригіналу)
+let sortedArr = [...arr].sort((a, b) => a - b);
+console.log("Сортований масив:", sortedArr);
 
-// Сортування масиву по зростанню
-console.log("Сортований масив: ", arr.sort((a, b) => a - b));
-
-// Реверс масиву після сортування
-console.log("Реверсований масив: ", arr.reverse());
+// Реверс масиву (також без зміни оригіналу)
+let reversedArr = [...sortedArr].reverse();
+console.log("Реверсований масив:", reversedArr);
 
